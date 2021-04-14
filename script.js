@@ -63,20 +63,27 @@ window.addEventListener("load", function () {
       let fuelStatus = document.querySelector("li[id=fuelStatus]");
       let cargoStatus = document.querySelector("li[id=cargoStatus]");
       let launchStatus = document.getElementById("launchStatus");
+      
+      if (fuelLevel.value < 10000) {
+         fuelStatus.innerHTML = `Fuel Level ${fuelLevel.value} not enough fuel for the journey!`;
+      }
+      else {
+         fuelStatus.innerHTML = `Fuel Level ${fuelLevel.value} ready for launch!`;
+      }
+      if (cargoMass.value > 10000) {
+         cargoStatus.innerHTML = `Cargo Mass ${cargoMass.value} too high for the journey!`;
+      }
+      else {
+         cargoStatus.innerHTML = `Cargo Mass ${cargoMass.value} ready for launch!`; 
+      }
+         
       if (fuelLevel.value < 10000 || cargoMass.value > 10000)
       {
-         if (fuelLevel.value < 10000)
-            fuelStatus.innerHTML = `Fuel Level ${fuelLevel.value} not enough fuel for the journey!`;
-         if (cargoMass.value > 10000)
-            cargoStatus.innerHTML = `Cargo Mass ${cargoMass.value} too high for the journey!`;
-         
          launchStatus.innerHTML = "Shuttle not ready for launch.";
          launchStatus.style.color = "red";
       }
       else 
       {
-         fuelStatus.innerHTML = `Fuel Level ${fuelLevel.value} ready for launch!`;
-         cargoStatus.innerHTML = `Cargo Mass ${cargoMass.value} ready for launch!`; 
          launchStatus.innerHTML = "Shuttle is ready for launch!";
          launchStatus.style.color = "green";
       }
